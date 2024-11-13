@@ -34,8 +34,12 @@ RUN xx-info env
 # Build nodejs from source
 RUN wget -O - https://nodejs.org/dist/${NODE}/node-${NODE}.tar.gz | tar -xz && \
 	cd node-$NODE && \
-    export CC="gcc" && \
-    export CXX="g++" && \
+    export CC="/usr/bin/armv7-alpine-linux-musleabihf-gcc" && \
+    export CXX="/usr/bin/armv7-alpine-linux-musleabihf-g++" && \
+    export AR="/usr/bin/armv7-alpine-linux-musleabihf-ar" && \
+    export RANLIB="/usr/bin/armv7-alpine-linux-musleabihf-ranlib" && \
+    export LD="/usr/bin/armv7-alpine-linux-musleabihf-ld" && \
+    export STRIP="/usr/bin/armv7-alpine-linux-musleabihf-strip" && \
     export CFLAGS="$CFLAGS -march=armv7-a+vfpv4 -mfloat-abi=hard" && \
     export CXXFLAGS="$CXXFLAGS -march=armv7-a+vfpv4 -mfloat-abi=hard" && \
 	./configure --prefix=/usr/local --enable-lto --openssl-use-def-ca-store --with-intl=none --without-inspector --cross-compiling --dest-os=linux --dest-cpu=arm --with-arm-float-abi=hard --with-arm-fpu=vfpv3&& \
