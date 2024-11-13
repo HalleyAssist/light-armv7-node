@@ -8,9 +8,11 @@ ARG NODE="v20.18.0"
 
 FROM --platform=$BUILDPLATFORM alpine AS xbuild
 
+ARG TARGETPLATFORM
 ARG NODE
 
-RUN apk add --update --no-cache \
+RUN xx-apk add --update --no-cache \
+    musl-dev zlib-dev \
 	build-base \
 	python3 \
 	curl \
@@ -22,12 +24,6 @@ RUN apk add --update --no-cache \
 	icu-dev \
 	linux-headers
 
-# Add ARMv7 cross-compilation support
-RUN apk add --update --no-cache \
-    armv7-linux-musleabihf-gcc \
-    armv7-linux-musleabihf-g++ \
-    armv7-linux-musleabihf-pkgconf \
-    armv7-linux-musleabihf-cmake
 
 # Build nodejs from source
 RUN wget -O - https://nodejs.org/dist/${NODE}/node-${NODE}.tar.gz | tar -xz && \
