@@ -21,9 +21,10 @@ RUN apk add --update curl cargo \
 	python3 \
     busybox \
 	build-base
+RUN xx-apk add --update \
+    musl-dev zlib-dev gcc g++
 
 RUN xx-apk add  --no-scripts --update \
-    musl-dev zlib-dev gcc g++  \
 	libuv-dev \
 	sqlite-dev \
 	icu-dev \
