@@ -1,7 +1,7 @@
 ARG NODE="v20.18.0"
 
 # Use an ARMv7 base image
-FROM --platform=$BUILDPLATFORM arm32v7/alpine:3.18
+FROM arm32v7/alpine:3.18
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
