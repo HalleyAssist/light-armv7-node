@@ -5,6 +5,8 @@ on:
         branches:
             - main
 
+env:
+    IMAGE_NAME: light-armv7-node
 jobs:
     build:
         runs-on: ubuntu-latest
