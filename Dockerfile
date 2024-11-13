@@ -18,12 +18,13 @@ ARG NODE
 RUN apk add --update curl cargo \
     rust \
 	pkgconfig \
-	python3
+	python3 \
+    busybox \
+	build-base
 
 RUN xx-apk add --update \
     musl-dev zlib-dev \
-	build-base \
-	libuv \
+	libuv-dev \
 	sqlite-dev \
 	icu-dev \
 	linux-headers
