@@ -22,7 +22,7 @@ RUN apk add --update curl cargo \
     busybox \
 	build-base
 
-RUN xx-apk add --update \
+RUN xx-apk add  --no-scripts --update \
     musl-dev zlib-dev \
 	libuv-dev \
 	sqlite-dev \
