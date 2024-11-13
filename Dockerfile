@@ -2,11 +2,15 @@
 ARG ALPINE_VERSION="3.18"
 ARG NODE="v20.18.0"
 
+FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
+
 ###################################################
 # Build nodejs
 ###################################################
 
 FROM --platform=$BUILDPLATFORM alpine AS xbuild
+
+COPY --from=xx / /
 
 ARG TARGETPLATFORM
 ARG NODE
