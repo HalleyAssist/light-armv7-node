@@ -15,19 +15,18 @@ COPY --from=xx / /
 ARG TARGETPLATFORM
 ARG NODE
 
-RUN xx-apk add --update --no-cache \
+RUN apk add --update curl cargo \
+    rust \
+	pkgconfig \
+	python3
+
+RUN xx-apk add --update \
     musl-dev zlib-dev \
 	build-base \
-	python3 \
-	curl \
 	libuv \
 	sqlite-dev \
-	cargo \
-	rust \
-	pkgconfig \
 	icu-dev \
 	linux-headers
-
 
 # Build nodejs from source
 RUN wget -O - https://nodejs.org/dist/${NODE}/node-${NODE}.tar.gz | tar -xz && \
