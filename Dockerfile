@@ -31,7 +31,7 @@ RUN xx-apk add  --no-scripts --update \
 
 RUN xx-info env
 
-RUN find / | grep gcc | grep arm
+RUN /armv7-alpine-linux-musleabihf/usr/bin/armv7-alpine-linux-musleabihf-gcc --help
 
 # Build nodejs from source
 RUN wget -O - https://nodejs.org/dist/${NODE}/node-${NODE}.tar.gz | tar -xz && \
