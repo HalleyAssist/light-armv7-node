@@ -31,6 +31,8 @@ RUN xx-apk add  --no-scripts --update \
 
 RUN xx-info env
 
+RUN find / | grep gcc | grep arm
+
 # Build nodejs from source
 RUN wget -O - https://nodejs.org/dist/${NODE}/node-${NODE}.tar.gz | tar -xz && \
 	cd node-$NODE && \
