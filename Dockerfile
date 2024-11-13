@@ -6,7 +6,7 @@ ARG NODE="v20.18.0"
 # Build nodejs
 ###################################################
 
-FROM alpine:${ALPINE_VERSION} as build-node
+FROM --platform=$BUILDPLATFORM alpine AS xbuild
 
 ARG NODE
 

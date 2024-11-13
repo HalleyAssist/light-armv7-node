@@ -17,7 +17,7 @@ jobs:
 
         - name: Build image
           run: |
-           docker build . --file Dockerfile --tag $IMAGE_NAME --build-arg arg_k8s_application_commit=${{ github.sha }} --build-arg arg_k8s_application_version=${{ github.ref }}
+           docker build . --file Dockerfile --tag $IMAGE_NAME --build-arg arg_k8s_application_commit=${{ github.sha }} --build-arg arg_k8s_application_version=${{ github.ref }} --platform=linux/arm/v7
   
 
         - name: Log into registry
