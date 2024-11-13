@@ -15,6 +15,10 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v2
 
+        - name: Set up QEMU
+          run: |
+            docker run --privileged --rm tonistiigi/binfmt --install all
+
         - name: Build image
           run: |
            docker build . --file Dockerfile --tag $IMAGE_NAME --build-arg arg_k8s_application_commit=${{ github.sha }} --build-arg arg_k8s_application_version=${{ github.ref }} --platform=linux/arm/v7
